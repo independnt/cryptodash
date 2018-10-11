@@ -10,8 +10,9 @@ const ControlButton = styled.div `
 `
 
 const AppLayout = styled.div `
+  padding: 30px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 180px auto 100px 100px;
 `
 
 class App extends Component {
@@ -21,6 +22,8 @@ class App extends Component {
         <Logo>
           CryptoDash
         </Logo>
+        <div>
+        </div>
         <ControlButton>
           Dashboard
         </ControlButton>
