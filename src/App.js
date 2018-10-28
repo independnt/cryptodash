@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import styled, {css} from 'styled-components'
+const cc = require('cryptocompare')
 import AppBar from './AppBar.js'
 
 const AppLayout = styled.div `
@@ -30,6 +31,14 @@ class App extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.fetchCoins();
+  }
+
+  fetchCoins = () => {
+    console.log("fetching coins....")
+  }
+
   displayingDashboard = () => this.state.page === 'dashboard'
   displayingSettings = () => this.state.page === 'settings'
   firstVisitMessage = () => {
@@ -55,13 +64,20 @@ settingsContent = () => {
     </div>
   </div>
 }
+
+loadingContent = () => {
+  if(!this.state.coinList){
+    return <div> Loading Coins </div>
+  }
+}
+
   render() {
     return (
       <AppLayout>
         {AppBar.call(this)}
-        <Content>
+        {this.loadingContent() || <Content>
           {this.displayingSettings() && this.settingsContent()}
-        </Content>
+        </Content>}
       </AppLayout>
     );
   }
