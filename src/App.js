@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import styled, {css} from 'styled-components'
 import AppBar from './AppBar.js'
-
+import CoinList from './CoinList'
 const cc = require('cryptocompare')
 
 const AppLayout = styled.div `
