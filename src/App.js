@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import styled, {css} from 'styled-components'
-const cc = require('cryptocompare')
 import AppBar from './AppBar.js'
+
+const cc = require('cryptocompare')
 
 const AppLayout = styled.div `
   padding: 30px;
@@ -26,7 +27,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      page: "dashboard",
+      page: "settings",
       ...checkFirstVisit()
     }
   }
@@ -35,8 +36,9 @@ class App extends Component {
     this.fetchCoins();
   }
 
-  fetchCoins = () => {
-    console.log("fetching coins....")
+  fetchCoins = async () => {
+    let coinList = (await cc.coinList()).Data;
+    this.setState({coinList});
   }
 
   displayingDashboard = () => this.state.page === 'dashboard'
