@@ -1,17 +1,18 @@
 import React from 'react';
-import styled from 'styled-components'
-
+import styled from 'styled-components';
+import {subtleBoxShadow, lightBlueBackground} from './Style';
 const CoinGrid = styled.div `
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
 `
 const CoinTile = styled.div `
-  border: 1px solid white;
+  ${subtleBoxShadow}
+  ${lightBlueBackground}
   padding: 10px;
   &:hover{
       cursor: pointer;
-      border: 1px solid blue;
+      border: 1px solid white;
   }
 `
 
