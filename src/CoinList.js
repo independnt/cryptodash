@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {subtleBoxShadow, lightBlueBackground} from './Style';
+import {subtleBoxShadow, lightBlueBackground, greenBoxShadow} from './Style';
 const CoinGrid = styled.div `
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -12,7 +12,7 @@ const CoinTile = styled.div `
   padding: 10px;
   &:hover{
       cursor: pointer;
-      border: 1px solid white;
+      ${greenBoxShadow}
   }
 `
 
@@ -21,7 +21,9 @@ export default function(){
 
     {Object.keys(this.state.coinList).map(coin =>
       <CoinTile>
-        {coin}
+        {this.state.coinList[coin].CoinName}
+        {this.state.coinList[coin].Symbol}
+        {<img style={{height: '50px'}} src={`http://cryptocompare.com/${this.state.coinList[coin].ImageUrl}`} />}
       </CoinTile>)}
   </CoinGrid>
 }
