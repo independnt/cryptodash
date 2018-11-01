@@ -64,6 +64,9 @@ settingsContent = () => {
     <div onClick={this.confirmFavorites}>
       Confirm Favorites
     </div>
+    <div>
+      {CoinList.call(this)}
+    </div>
   </div>
 }
 
