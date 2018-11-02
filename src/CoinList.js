@@ -16,14 +16,25 @@ const CoinTile = styled.div `
   }
 `
 
+const CoinHeaderGrid = styled.div `
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
+
+const CoinSymbol = styled.div`
+  justify-self: right;
+`
+
 export default function(){
   return <CoinGrid>
 
-    {Object.keys(this.state.coinList).map(coin =>
+    {Object.keys(this.state.coinList).slice(0, 100).map(coin =>
       <CoinTile>
-        {this.state.coinList[coin].CoinName}
-        {this.state.coinList[coin].Symbol}
-        {<img style={{height: '50px'}} src={`http://cryptocompare.com/${this.state.coinList[coin].ImageUrl}`} />}
+        <CoinHeaderGrid>
+        <div> {this.state.coinList[coin].CoinName} </div>
+        <CoinSymbol> {this.state.coinList[coin].Symbol} </CoinSymbol>
+        </CoinHeaderGrid>
+        <img style={{height: '50px'}} src={`http://cryptocompare.com/${this.state.coinList[coin].ImageUrl}`} />
       </CoinTile>)}
   </CoinGrid>
 }
